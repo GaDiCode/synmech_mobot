@@ -16,49 +16,34 @@
         <color rgba = "0.96 0.95 0.92 1"/>
     </material>
 
-    <link name="base_link">
-        <visual>
-            <origin xyz="0 0 0"/>
-            <geometry>
-                <sphere radius="0.1"/>
-            </geometry>
-            <material name="c3"/>
-        </visual>
-    </link>
 
+    <!-- ========================================== -->
+    <!--         GỐC ẢO VÀ TRỌNG TÂM ROBOT          -->
+    <!-- ========================================== -->
     <link name="base_footprint"/>
-        <visual>
-            <origin xyz="0 0 0"/>
-            <geometry>
-                <sphere radius="0.1"/>
-            </geometry>
-            <material name="c3"/>
-        </visual>
-    </link>
-
-    <link name="base_link">
-        <visual>
-            <origin xyz="0 0 0"/>
-            <geometry>
-                <sphere radius="0.1"/>
-            </geometry>
-            <material name="c3"/>
-        </visual>
-    </link>
-
-    <joint name="tes_joint" type="fixed">
-        <parent link="base_link"/>
-        <child link="tes"/>
-        <origin xyz="-0.1 0 0"/>
+    <link name="base_link"/>
+    <joint name="base_footprint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0.015" rpy="0 0 0"/>
     </joint>
 
-    <link name="tes">
+    <!-- ========================================== -->
+    <!--              Thân xe (Chasis)              -->
+    <!-- ========================================== -->
+    <link name="chasis_link">
         <visual>
-            <origin xyz="-0.5 -0.5 -0.5"/>
+            <origin xyz="0 0 0.05"/>   <!-- Vị trí của tâm khối so với gốc tọa độ (trục bánh xe)-->
             <geometry>
-                <box size="1 1 1"/>
+                <box size="0.3 0.3 0.2"/>
             </geometry>
             <material name="matcha"/>
         </visual>
     </link>
+
+    <joint name="chasis_base" type="fixed">
+        <parent link="base_link"/>
+        <child link="chasis_link"/>
+        <origin xyz="0 0 0.05"/>
+    </joint>
 </robot>

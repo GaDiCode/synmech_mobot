@@ -1,0 +1,8 @@
+# Ignore build folders
+bin/
+obj/
+# Ignore python cache
+__pycache__/
+*.pyc
+# Ignore backup files
+*~
