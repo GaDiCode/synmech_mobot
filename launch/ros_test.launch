@@ -1,7 +1,9 @@
 <launch>
     <param name="robot_description" command="$(find xacro)/xacro '$(find synmech_mobot)/urdf/robot.urdf.xacro'" />
-
+    <!-- 1. Node này cung cấp trạng thái các khớp (vị trí xoay) -->
     <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+
+    <!-- 2. Node này kết hợp URDF và trạng thái khớp để tạo ra cây TF -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find synmech_mobot)/rviz/urdf.rviz" required="true" />
